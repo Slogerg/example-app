@@ -16,7 +16,7 @@ class BlogPostFactory extends Factory
 //    protected $model = Model::class;
 
     /**
-     * Define the model's default state.
+     * Define the model's default state.define you
      *
      * @return array
      */
