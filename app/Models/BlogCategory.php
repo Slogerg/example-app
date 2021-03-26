@@ -16,5 +16,5 @@ class BlogCategory extends Model
         'parent_id',
         'description',
     ];
-//    use HasFactory;
+
 }

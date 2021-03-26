@@ -5,9 +5,16 @@
     @php
         /** @var \App\Models\BlogCategory $item */
     @endphp
+
+    @if($item->exists)
     <form method="POST" action="{{route('blog.admin.categories.update', $item->id)}}">
         {{--додаємо директиву, щоб ларавель зрозумів, що метод відправки форми - PATCH--}}
         @method('PATCH')
+
+        @else
+            <form method="POST" action="{{ route('blog.admin.categories.store') }}">
+                @endif
+
 
 {{--        відправляємо токен для захисту форму від різних підлогів--}}
         @csrf
