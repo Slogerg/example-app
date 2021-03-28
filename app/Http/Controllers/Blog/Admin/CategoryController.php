@@ -6,12 +6,30 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BlogCategoryCreateRequest;
 use App\Http\Requests\BlogCategoryUpdateRequest;
 use App\Models\BlogCategory;
+use App\Repositories\BlogCategoryRepository;
 use Illuminate\Http\Request;
 
-
+/**
+ * Керування категоріями блога
+ *
+ * @package App\Http\Controllers\Blog\Admin
+ */
 
 class CategoryController extends BaseController
 {
+
+    /**
+     * @var BlogCategoryRepository
+     */
+    private $blogCategoryRepository;
+
+    //конструктор для присвоєння змінній типу об'єкт
+    public function __construct()
+    {
+        parent::__construct();
+        $this->blogCategoryRepository = app(BlogCategoryRepository::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +38,7 @@ class CategoryController extends BaseController
     public function index()
     {
 
-        $paginator = BlogCategory::paginate(5);
+        $paginator = $this->blogCategoryRepository->getAllWithPaginate(5);
 
         return view('blog.admin.categories.index', compact('paginator'));
     }
@@ -33,7 +51,7 @@ class CategoryController extends BaseController
     public function create()
     {
         $item = new BlogCategory();
-        $categoryList = BlogCategory::all();
+        $categoryList = $this->blogCategoryRepository->getForComboBox();
 
         return view('blog.admin.categories.edit',
           compact('item','categoryList'));
@@ -53,8 +71,8 @@ class CategoryController extends BaseController
         }
 
         //створення об'єкта но не добавлення його в БД
-        $item = new BlogCategory($data);
-        $item->save();
+//        $item = new BlogCategory($data);
+//        $item->save();
 
         //створення об'єкта і добавлення його в БД
         $item = (new BlogCategory())->create($data);
@@ -72,17 +90,24 @@ class CategoryController extends BaseController
      * Show the form for editing the specified resource.
      *
      * @param int $id
+     * @param BlogCategoryRepository $categoryRepository
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, BlogCategoryRepository $categoryRepository)
     {
-        //находження по ідентифікатору($id) категорію
-        $item = BlogCategory::findOrFail($id);
 
-        //Вигрузка з бази даних
-        $categoryList = BlogCategory::all();
+//        $item = BlogCategory::findOrFail($id);
+//        $categoryList = $categoryRepository->getForComboBox();
 
-        //відправка в представлення
+        $item = $this->blogCategoryRepository->getEdit($id);
+        if(empty($item)){
+            abort(404);
+        }
+
+        $categoryList = $this->blogCategoryRepository->getForComboBox();
+
+
+        //        відправка в представлення
         return view('blog.admin.categories.edit',
         compact('item','categoryList'));
     }
@@ -116,7 +141,7 @@ class CategoryController extends BaseController
 */
 
         //$request - об'єкт класу Request інструментарій, за допомогою якого ми можемо працювати з вхідними даними
-        $item = BlogCategory::find($id);
+        $item = $this->blogCategoryRepository->getEdit($id);
         if(empty($item)){
             return back()
                 ->withErrors(['msg'=>"Запис id = [{$id}] не знайдена"])
