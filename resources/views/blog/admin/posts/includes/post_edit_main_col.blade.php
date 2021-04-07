@@ -74,9 +74,11 @@
                             </textarea>
                         </div>
                         <div class="form-check">
-                            <input type="hidden" value="0" name="is_published">
+                            <input type="hidden"
+                                   value="0"
+                                   name="is_published">
                             <input type="checkbox" name="is_published" class="form-check-input"
-                                    value="{{ $item->is_published }}"
+                                    value="1"
                                     @if($item->is_published)
                                         checked="checked"
                                     @endif>
