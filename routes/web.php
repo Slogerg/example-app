@@ -23,23 +23,41 @@ Route::group(['namespace'=>'App\Http\Controllers\Blog','prefix'=>'blog'],functio
     Route::resource('posts','PostController')->names('blog.posts');
 });
 
-$groupData = [
-    'namespace' => 'App\Http\Controllers\Blog\Admin',
-    'prefix'    => 'admin/blog',
-];
+//$groupData = [
+//    'namespace' => 'App\Http\Controllers\Blog\Admin',
+//    'prefix'    => 'admin/blog',
+//];
+Route::group(['middleware' => ['role:admin']], function () {
+    $groupData = [
+        'namespace' => 'App\Http\Controllers\Blog\Admin',
+        'prefix'    => 'admin/blog',
+    ];
+    Route::group($groupData, function (){
+        //BlogCategory
+        $methods = ['index','edit','update','create','store',];
+        Route::resource('categories','CategoryController')
+            ->only($methods)
+            ->names('blog.admin.categories');
 
-Route::group($groupData,function (){
-    //BlogCategory
-    $methods = ['index','edit','update','create','store',];
-    Route::resource('categories','CategoryController')
-        ->only($methods)
-        ->names('blog.admin.categories');
-
-    //BlogPosts
-    Route::resource('posts','PostController')
-        ->except(['show'])
-        ->names('blog.admin.posts');
+        //BlogPosts
+        Route::resource('posts','PostController')
+            ->except(['show'])
+            ->names('blog.admin.posts');
+    });
 });
+
+//Route::group($groupData, function (){
+//    //BlogCategory
+//    $methods = ['index','edit','update','create','store',];
+//    Route::resource('categories','CategoryController')
+//        ->only($methods)
+//        ->names('blog.admin.categories');
+//
+//    //BlogPosts
+//    Route::resource('posts','PostController')
+//        ->except(['show'])
+//        ->names('blog.admin.posts');
+//});
 
 //Route::resource('rest', 'RestTestController')->names('restTest');
 //Route::resource('rest', 'App\Http\Controllers\RestTestController')->names('restTest');
