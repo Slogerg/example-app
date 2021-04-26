@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-
+        Spatie\Permission\PermissionServiceProvider::class,
 
 
     ],
