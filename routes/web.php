@@ -21,7 +21,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['namespace'=>'App\Http\Controllers\Blog','prefix'=>'blog'],function (){
     Route::resource('posts','PostController')->names('blog.posts');
+
+    Route::resource('show', 'PostController')->names('blog.posts');
 });
+
 
 //$groupData = [
 //    'namespace' => 'App\Http\Controllers\Blog\Admin',

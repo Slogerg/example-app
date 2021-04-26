@@ -53,7 +53,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = BlogPost::findOrFail($id);
+
+//dd($item);
+
+        return view('blog.posts.show', compact('item'));
     }
 
     /**
