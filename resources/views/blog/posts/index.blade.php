@@ -1,7 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
-{{--<div class="container">--}}
+
 
 <div class="container">
     <div class="row justify-content-center">
@@ -16,6 +15,7 @@
                     <td>Категорія</td>
                     <td>Дата публікації</td>
                 </tr>
+
         @foreach($items as $item)
         @if($item->is_published)
             <tr>
@@ -25,11 +25,6 @@
                 <td>{{$item->created_at}}</td>
             </tr>
         @endif
-
-
-
-
-
         @endforeach
         </table>
                 </div>

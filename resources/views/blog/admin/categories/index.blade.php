@@ -14,12 +14,13 @@
                             <tr>
                                 <th>#</th>
                                 <th>Категорія</th>
-                                <th>Батько</th>
+                                <th>Батьківська категорія</th>
                             </tr>
 
                             </thead>
                             <tbody>
                             @foreach($paginator as $item)
+                                @if($item->title != 'Без категорії')
                                 @php /** @var \App\Models\BlogCategory $item */ @endphp
                                 <tr>
                                     <td>{{$item->id-1}}</td>
@@ -29,9 +30,11 @@
                                         </a>
                                     </td>
                                     <td @if(in_array($item->parent_id,[0,1])) style ="color:#ccc" @endif>
-                                    {{$item->parent_id}}{{--$item->parentCategory->title --}}
+                                    {{$item->parent_id-1}}
+
                                     </td>
                                 </tr>
+                                @endif
                             @endforeach
                             </tbody>
                         </table>

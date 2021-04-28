@@ -68,11 +68,20 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="excerpt">Витримка</label>
+                            <label for="img">Витримка</label>
+                            <textarea name="img" id="img" rows="2" class="form-control">
+                                {{  $item->excerpt }}
+                            </textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="excerpt">Картинка</label>
                             <textarea name="excerpt" id="excerpt" rows="3" class="form-control">
                                 {{ old('excerpt', $item->excerpt) }}
                             </textarea>
                         </div>
+
+
                         <div class="form-check">
                             <input type="hidden"
                                    value="0"

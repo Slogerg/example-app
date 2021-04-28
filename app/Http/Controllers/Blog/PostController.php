@@ -20,8 +20,8 @@ class PostController extends Controller
     {
         //
         $items = BlogPost::all();
-
-        return view('blog.posts.index', compact('items'));
+//        $items = array_reverse($items);
+        return view('blog.posts.index', ['items'=>$items->reverse()]);
     }
 
     /**

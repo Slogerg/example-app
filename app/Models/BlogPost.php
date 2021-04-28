@@ -18,6 +18,7 @@ class BlogPost extends Model
             'slug',
             'category_id',
             'excerpt',
+            'img',
             'content_raw',
             'is_published',
             'published_at',

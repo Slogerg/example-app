@@ -25,7 +25,7 @@ class BlogCategoryUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-                'title'         => 'required|min:5|max:200',
+                'title'         => 'required|min:4|max:200',
                 'slug'          => 'max:200',
                 'description'   => 'string',
                 'parent_id'     => 'required|integer|exists:blog_categories,id',
