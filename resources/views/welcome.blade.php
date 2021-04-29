@@ -98,7 +98,7 @@
             <div class="card h-100">
                 <img class="card-img-top" src="https://placehold.it/300x200" alt="">
                 <div class="card-body">
-                    <h4 class="card-title">Замовити полсуги програміста</h4>
+                    <h4 class="card-title">Замовити послуги програміста</h4>
                     <p class="card-text">По нашому адресу ви знайдете офіс з дуже талановитими програмістами, які допоможуть вам створити і підтримати свій проект.</p>
                 </div>
                 <div class="card-footer">

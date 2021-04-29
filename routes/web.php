@@ -21,7 +21,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['namespace'=>'App\Http\Controllers\Blog','prefix'=>'blog'],function (){
     Route::resource('posts','PostController')->names('blog.posts');
-
+    Route::resource('store','PostController')->names('blog.posts');
     Route::resource('show', 'PostController')->names('blog.posts');
 });
 
@@ -30,6 +30,8 @@ Route::group(['namespace'=>'App\Http\Controllers\Blog','prefix'=>'blog'],functio
 //    'namespace' => 'App\Http\Controllers\Blog\Admin',
 //    'prefix'    => 'admin/blog',
 //];
+
+
 Route::group(['middleware' => ['role:admin']], function () {
     $groupData = [
         'namespace' => 'App\Http\Controllers\Blog\Admin',

@@ -18,6 +18,7 @@
     <!-- Custom styles for this template -->
 
 
+
 </head>
 
 <body>
@@ -58,7 +59,6 @@
             @endif
             <hr>
 
-
                 <p class="lead">
                     {{$item->content_raw}}
                 </p>
@@ -66,20 +66,38 @@
             <hr>
 
             <div class="card my-4">
-                <h5 class="card-header">Leave a Comment:</h5>
+                <h5 class="card-header">Залиште коментар:</h5>
                 <div class="card-body">
-                    <form>
+                    <form method="POST" action="{{route('blog.posts.store')}}">
+                        @csrf
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+
+                            <input type="hidden" id="user_id" name="user_id" value="{{auth()->user()->id}}">
+                            <input type="hidden" id="blog_post_id" name="blog_post_id" value="{{$item->id}}">
+                            <textarea id="text_comment" name="text_comment" class="form-control" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                        <button type="submit" class="btn btn-primary">Підтвердити</button>
                     </form>
                 </div>
             </div>
+            <hr>
+                @foreach($item->comments->reverse() as $comments)
 
-        <div class="col-md-4">
+            <div class="media mb-4">
+                <hr>
+                <div class="media-body">
+                    <h5 class="mt-0">
 
-        </div>
+                {{$comments->user->name}}
+
+                    </h5>
+                    {{$comments->text_comment}}
+                </div>
+            </div>
+                <hr>
+            @endforeach
+
 
     </div>
 

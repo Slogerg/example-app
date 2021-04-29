@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Blog;
 
 //use App\Http\Controllers\Controller;
 use App\Http\Controllers\Controller;
+use App\Models\BlogComments;
 use App\Models\BlogPost;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -42,7 +44,26 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->input();
+
+//
+//        $data["user_id"] = auth()->user()->id;
+
+//        $data["blog_post_id"] = $item->post->id;
+//        dd($data);
+        $item = new BlogComments();
+        $item->create($data);
+
+
+        if($item){
+            return redirect()->route('blog.posts.show', $data["blog_post_id"])
+                ->with(['success'=>'Успішно опубліковано']);
+
+        }
+        else{
+            return back()->withErrors(['msg'=>'помилка збереження'])
+                ->withInput();
+        }
     }
 
     /**

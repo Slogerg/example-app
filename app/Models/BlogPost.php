@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+
+use Egulias\EmailValidator\Warning\Comment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -39,5 +41,10 @@ class BlogPost extends Model
     {
         //Стаття належить користувачу
         return $this->belongsTo(User::class);
+    }
+
+    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(BlogComments::class);
     }
 }
