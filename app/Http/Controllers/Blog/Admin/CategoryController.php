@@ -169,5 +169,18 @@ class CategoryController extends BaseController
 
     }
 
+    public function destroy($id)
+    {
+        $item = $this->blogCategoryRepository->getEdit($id);
+        $result = $item->forceDelete();
+        if($result){
+            return redirect()
+                ->route('blog.admin.categories.index')
+                ->with(['success'=>"Запис id[$id] видалена"]);
+        }else{
+            return back()->withErrors(['msg' => 'Помилка видалення']);
+        }
+    }
+
 
 }

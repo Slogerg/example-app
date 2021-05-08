@@ -6,12 +6,12 @@ namespace App\Http\Controllers\Blog;
 use App\Http\Controllers\Controller;
 use App\Models\BlogComments;
 use App\Models\BlogPost;
+use App\Repositories\BlogCategoryRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-
 
     /**
      * Display a listing of the resource.
@@ -22,8 +22,10 @@ class PostController extends Controller
     {
         //
         $items = BlogPost::all();
+        $items = $items->reverse();
+
 //        $items = array_reverse($items);
-        return view('blog.posts.index', ['items'=>$items->reverse()]);
+        return view('blog.posts.index',compact('items'));
     }
 
     /**

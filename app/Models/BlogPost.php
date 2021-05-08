@@ -25,6 +25,9 @@ class BlogPost extends Model
             'is_published',
             'published_at',
         ];
+
+
+
     /**
      * @var int|mixed|string
      */

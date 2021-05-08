@@ -33,7 +33,7 @@
                                 <div class="col-md-8">
                                     <div class="card card-block">
                                         <div class="card-body ml-auto">
-{{--                                            <button type="submit" class="btn btn-link">Видалити</button>--}}
+                                            <button type="submit" class="btn btn-link">Видалити</button>
                                         </div>
                                     </div>
                                 </div>

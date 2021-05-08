@@ -163,6 +163,17 @@ class PostController extends BaseController
      */
     public function destroy($id)
     {
-        dd(__METHOD__,$id, request()->all());
+        $item = $this->blogPostRepository->getEdit($id);
+
+        $result = $item->forceDelete();
+        if($result){
+            return redirect()
+                ->route('blog.admin.posts.index')
+                ->with(['success'=>"Запис id[$id] видалена"]);
+        }else{
+            return back()->withErrors(['msg' => 'Помилка видалення']);
+        }
+
+
     }
 }

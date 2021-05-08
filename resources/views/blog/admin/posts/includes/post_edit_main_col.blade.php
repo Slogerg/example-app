@@ -58,26 +58,27 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="slug">Ідентифікатор</label>
-                            <input type="text"
-                                    id="slug"
-                                    name="slug"
-                                    class="form-control"
-                            value="{{ $item->slug }}">
-                        </div>
+{{--                        <div class="form-group">--}}
+{{--                            <label for="slug">Ідентифікатор</label>--}}
+{{--                            <input type="text"--}}
+{{--                                    id="slug"--}}
+{{--                                    name="slug"--}}
+{{--                                    class="form-control"--}}
+{{--                                    placeholder="Залишіть поле"--}}
+{{--                            value="{{ $item->slug }}">--}}
+{{--                        </div>--}}
+
+{{--                        <div class="form-group">--}}
+{{--                            <label for="excerpt">Витримка</label>--}}
+{{--                            <textarea name="excerpt" id="excerpt" rows="2" class="form-control" >--}}
+{{--                                {{  $item->excerpt }}--}}
+{{--                            </textarea>--}}
+{{--                        </div>--}}
 
                         <div class="form-group">
-                            <label for="img">Витримка</label>
-                            <textarea name="img" id="img" rows="2" class="form-control">
-                                {{  $item->excerpt }}
-                            </textarea>
-                        </div>
+                            <label for="img">Картинка</label>
+                            <textarea name="img" id="img" rows="3" class="form-control" placeholder="Вставте URL адрес картинки">
 
-                        <div class="form-group">
-                            <label for="excerpt">Картинка</label>
-                            <textarea name="excerpt" id="excerpt" rows="3" class="form-control">
-                                {{ old('excerpt', $item->excerpt) }}
                             </textarea>
                         </div>
 

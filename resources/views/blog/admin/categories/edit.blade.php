@@ -60,4 +60,23 @@
             </div>
         </div>
     </form>
+<div class="container">
+    @if($item->exists)
+        <br>
+        <form method="POST" action= "{{ route('blog.admin.categories.destroy' , $item->id) }}">
+            @method('DELETE')
+            @csrf
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card card-block">
+                        <div class="card-body ml-auto">
+                            <button type="submit" class="btn btn-link">Видалити</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </form>
+    @endif
+</div>
 @endsection

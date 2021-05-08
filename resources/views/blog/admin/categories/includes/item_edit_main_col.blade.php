@@ -26,14 +26,14 @@
                                    required>
                         </div>
 
-                        <div class="form-group">
-                            <label for="slug">Ідентифікатор</label>
-                            <input type="text"
-                                    name="slug"
-                                    value="{{$item->slug}}"
-                                    id="slug"
-                                    class="form-control">
-                        </div>
+{{--                        <div class="form-group">--}}
+{{--                            <label for="slug">Ідентифікатор</label>--}}
+{{--                            <input type="text"--}}
+{{--                                    name="slug"--}}
+{{--                                    value="{{$item->slug}}"--}}
+{{--                                    id="slug"--}}
+{{--                                    class="form-control">--}}
+{{--                        </div>--}}
 
                         <div class="form-group">
                             <label for="parent_id">Батько</label>

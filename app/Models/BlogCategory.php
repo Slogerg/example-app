@@ -16,5 +16,13 @@ class BlogCategory extends Model
         'parent_id',
         'description',
     ];
+//
+//    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
+//    {
+//        return $this->hasMany(BlogComments::class);
+//    }
 
+    public function parentCategory(){
+        return $this->belongsTo(BlogCategory::class, 'parent_id','id');
+    }
 }

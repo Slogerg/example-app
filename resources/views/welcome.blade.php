@@ -62,7 +62,7 @@
                 <abbr title="Phone">Телефон:</abbr>
                 (380) 228-1234
                 <br>
-                <abbr title="Email">E:</abbr>
+                <abbr title="Email">Email:</abbr>
                 <a href="mailto:#">antonslogerg@gmail.com</a>
             </address>
         </div>
